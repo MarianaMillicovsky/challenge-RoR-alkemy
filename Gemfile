@@ -10,6 +10,8 @@ gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
+gem 'active_model_serializers'
+
 # Authentication Gem
 gem 'devise_token_auth'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
