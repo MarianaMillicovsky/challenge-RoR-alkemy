@@ -2,7 +2,6 @@ module Api
     module V1 
       class MoviesController < ApiController
         def index
-            movies = Movie.all    
             render json: movies, each_serializer: MovieSerializer,  status: :ok
         end
 
@@ -43,7 +42,30 @@ module Api
     
         private
 
-   
+        def movies
+            @movies ||= fetch_movies 
+        end
+      
+        def fetch_movies 
+            mvs = Movie.all   
+            mvs = mvs.for_title(title) if title       #llamo cada escope que defini dentro del modelo Movie
+            mvs = mvs.for_genre(genre) if genre 
+            mvs = mvs.for_date_of_creation(order) if order 
+            mvs
+        end
+      
+        def title 
+            params[:title]
+        end 
+      
+        def genre
+            params[:genre]
+        end 
+      
+        def order 
+            params[:order]
+        end
+
         def movie_params
            params.require(:movie).permit(:image_url, :title, :date_of_creation, :rating, :genre_id)
         end
@@ -51,11 +73,6 @@ module Api
         def movie 
             @movie ||= Movie.find(params[:id])
            end
-
-
-        def genre
-            params[:genre]
-        end 
 
         def genre_selection_id
             if genre
