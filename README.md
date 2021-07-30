@@ -10,7 +10,7 @@
 * Rails version: 6.1.4
 * database: mysql
 
-#### **gemas:** <br>
+#### **gemas añadidas:** <br>
 * gem 'devise_token_auth'  <br>
 * gem 'active_model_serializers'
 
