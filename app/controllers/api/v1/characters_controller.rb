@@ -4,6 +4,42 @@ module Api
         def index
             render json: characters, each_serializer: CharacterSerializer,  status: :ok
         end
+
+        def show
+          character 
+          render json: character, serializer: ShowCharacterSerializer::CharacterSerializer,  status: :ok 
+        end
+
+        def update
+          if character.update(character_params)
+            render json: character, serializer: ShowCharacterSerializer::CharacterSerializer,  status: :ok  
+          else 
+            render json: character.errors, status: :unprocessable_entity
+          end
+        end
+  
+        def create 
+          create_character = Character.new(character_params) 
+          create_character.movie = movie_selection_id
+          if create_character.save    
+          render json: create_character, serializer: CreateCharacterSerializer::CharacterSerializer, status: :created  
+         else  
+           render json:  create_character.errors , status: :unprocessable_entity
+          end
+        end
+  
+        def destroy 
+          @character = Character.find_by("id": params[:id])  #el find_by() returns nill si no hay
+         
+          if  @character.nil?    
+            render json: { error: "cannot destroy, it does not exist" }, status: :unprocessable_entity
+          else  
+            character    #ahora si puedo usar find()
+            if character.destroy 
+            render json: { message: "character destroyed"}, status: :ok
+            end
+          end
+        end
     
         private
    
@@ -13,6 +49,14 @@ module Api
    
         def character_params
          params.require(:character).permit( :image_url, :name, :age, :weight, :history, :movie_id)
+        end
+
+        def character 
+          @character ||= Character.find(params[:id])
+        end
+
+        def movie_selection_id
+          @movie = Movie.find(params[:movie_id])
         end
    
       end
