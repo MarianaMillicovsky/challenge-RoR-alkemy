@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# challenge-RoR-alkemy
+## API REST para explorar el mundo de Disney.  <br>
+-Modelos: Character, Movie, Genre. Asociaciones: belongs_to, mas_many <br>
+-Autenticacion de usuarios. <br>
+-CRUD Character. Index y Filtros de busqueda: por nombre, edad, peso y/o pelicula. <br>
+-CRUD Movie. Index y Filtros: por titulo y/o genero. Mostrar en orden ascendente o descendente. <br>
 
-Things you may want to cover:
+### Proyecto creado con:
+* Ruby version: 3.0.0
+* Rails version: 6.1.4
+* database: mysql
 
-* Ruby version
+#### **gemas:** <br>
+* gem 'devise_token_auth'  <br>
+* gem 'active_model_serializers'
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
