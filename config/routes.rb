@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :characters   #Se accede a la ruta /api/v1/characters
+      resources :characters,   #Se accede a la ruta /api/v1/characters
+                :movies
     end
   end
 
