@@ -2,8 +2,8 @@ module Api
     module V1 
       class CharactersController < ApiController
         def index
-            render json: characters, each_serializer: CharacterSerializer,  status: :ok
-        end
+          render json: characters, each_serializer: CharacterSerializer,  status: :ok
+       end
 
         def show
           character 
@@ -44,8 +44,33 @@ module Api
         private
    
         def characters
-            @characters ||= Character.all 
+          @characters ||= fetch_characters 
         end
+    
+        def fetch_characters 
+          chrts = Character.all
+          chrts = chrts.for_movie(movie) if movie
+          chrts = chrts.for_name(name) if name 
+          chrts = chrts.for_age(age) if age 
+          chrts = chrts.for_weight(weight) if weight  
+          chrts
+        end
+    
+        def name 
+          params[:name]
+        end 
+    
+        def age 
+          params[:age]
+        end 
+    
+        def weight 
+          params[:weight]
+        end
+    
+        def movie 
+          params[:movie]
+        end 
    
         def character_params
          params.require(:character).permit( :image_url, :name, :age, :weight, :history, :movie_id)
