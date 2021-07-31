@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <title>MailerDevise</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag      'application' %> 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <p class="notice"><%= notice %></p> 
+   <p class="alert"><%= alert %></p> 
+   <% yield %>
+    <h1>Welcome to example.com, <%= @user.name %></h1>
+    <p>
+      You have successfully signed up to example.com,
+      your username is: <%= @user.login %>.<br>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
