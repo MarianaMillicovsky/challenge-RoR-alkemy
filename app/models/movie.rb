@@ -1,6 +1,6 @@
 class Movie < ApplicationRecord
     #Associations
-    belongs_to :genre
+    belongs_to :genre, optional: true
     has_many :characters
 
     #Validations

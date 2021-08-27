@@ -67,7 +67,7 @@ module Api
         end
 
         def movie_params
-           params.require(:movie).permit(:image_url, :title, :date_of_creation, :rating, :genre_id)
+           params.permit(:image_url, :title, :date_of_creation, :rating, :genre_id)
         end
 
         def movie 
