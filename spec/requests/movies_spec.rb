@@ -12,10 +12,19 @@ require 'rails_helper'
     end
       
     describe 'GET /api/v1/movies/:id' do   
-      it 'returns the movie with its attributes' do 
-        movie = create(:movie) 
-        get api_v1_movie_path(id: movie.id)
-        expect(response).to have_http_status(:ok)
+      context 'when movie with given id exists' do
+        it 'returns the movie with its attributes' do 
+          movie = create(:movie) 
+          get api_v1_movie_path(id: movie.id)
+          expect(response).to have_http_status(:ok)
+        end
+      end
+
+      context 'when movie with given id does not exist' do
+        it 'returns 404 status' do 
+          get api_v1_movie_path(id: "3")
+          expect(response).to have_http_status(:not_found)
+        end
       end
     end
            

@@ -6,8 +6,13 @@ module Api
         end
 
         def show
+          @movie = Movie.find_by("id": params[:id])  
+          if  @movie.nil?    
+            render json: { error: "cannot find movie with given id" }, status: :not_found
+          else 
             movie 
             render json: movie, serializer: ShowMovieSerializer::MovieSerializer,  status: :ok 
+          end
         end
     
         def update

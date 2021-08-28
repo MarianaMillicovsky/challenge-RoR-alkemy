@@ -14,11 +14,20 @@ require 'rails_helper'
     end
       
     describe 'GET /api/v1/characters/:id' do   
-      it 'returns the character with its attributes' do 
-        character = create(:character)  #con create, se me invoca y almacena no solo en memoria (como con build, que es asi mas rapido) y se genera asi el id que necesito dar de parametro
-        get api_v1_character_path(id: character.id)
-        expect(response).to have_http_status(:ok)
-        #expect(response).to respond_with_content_type(:json)
+      context 'when character with given id exists' do
+        it 'returns the character with its attributes' do 
+          character = create(:character)  #con create, se me invoca y almacena no solo en memoria (como con build, que es asi mas rapido) y se genera asi el id que necesito dar de parametro
+          get api_v1_character_path(id: character.id)
+          expect(response).to have_http_status(:ok)
+          #expect(response).to respond_with_content_type(:json)
+        end
+      end
+
+      context 'when character with given id does not exist' do
+        it 'returns 404 status' do 
+          get api_v1_character_path(id: "3")
+          expect(response).to have_http_status(:not_found)
+        end
       end
     end
            

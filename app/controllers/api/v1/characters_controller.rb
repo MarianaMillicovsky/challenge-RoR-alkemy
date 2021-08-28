@@ -7,8 +7,13 @@ module Api
         end
 
         def show
+          @character = Character.find_by("id": params[:id])  
+          if  @character.nil?    
+            render json: { error: "cannot find character with given id" }, status: :not_found
+          else 
           character 
           render json: character, serializer: ShowCharacterSerializer::CharacterSerializer,  status: :ok 
+          end
         end
 
         def update
