@@ -69,7 +69,7 @@ require 'rails_helper'
         end
       end
       context 'when resource is not found' do  
-        it 'responds with 404' do 
+        it 'responds with 422' do 
           delete api_v1_movie_path(id: "0")
           expect(response).to have_http_status(:unprocessable_entity)
         end
