@@ -72,7 +72,7 @@ require 'rails_helper'
         end
       end
       context 'when resource is not found' do  
-        it 'responds with 404' do 
+        it 'responds with 422 status' do 
           #character = create(:character)
           #character === nil
           delete api_v1_character_path(id: "0")
