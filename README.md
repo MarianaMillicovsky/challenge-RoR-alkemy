@@ -1,4 +1,4 @@
-aniadir gem 'rspec-rails'
+aniadir gem 'rspec-rails'                hacer a users-ong-news-contact-authentication
   gem 'factory_bot_rails' a group: development, test en el Gemfile.
   
   -bundle
