@@ -29,19 +29,19 @@ este anterior es la configuracion para poder usar los metodos del FactoryBoy jun
  
  -rails g rswag:install
  
- Running via Spring preloader in process 9048
-    generate  rswag:specs:install
+    Running via Spring preloader in process 9048
+     generate  rswag:specs:install
        rails  generate rswag:specs:install
-Running via Spring preloader in process 9060
+    Running via Spring preloader in process 9060
       create  spec/swagger_helper.rb
-    generate  rswag:api:install
+     generate  rswag:api:install
        rails  generate rswag:api:install
-Running via Spring preloader in process 9071
+     Running via Spring preloader in process 9071
       create  config/initializers/rswag_api.rb
        route  mount Rswag::Api::Engine => '/api-docs'
     generate  rswag:ui:install
        rails  generate rswag:ui:install
-Running via Spring preloader in process 9101
+    Running via Spring preloader in process 9101
       create  config/initializers/rswag-ui.rb
        route  mount Rswag::Ui::Engine => '/api-docs'
        
